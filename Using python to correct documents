@@ -11,6 +11,7 @@ def info_update(doc,old_info,new_info):
 				cell.text = cell.text.replace(old_info,new_info)
 import os
 path = '/Users/jenniniu/Desktop/example/'
+#the path for the document that you want to replace
 files = []
 for file in os.listdir(path):
 	if file.endswith('.docx'):
@@ -21,5 +22,6 @@ for file in files:
 	doc = docx.Document(file)
 	info_update(doc,'gewkf','fewrf')
 	info_update(doc,'er','tjxt')
-	doc.save('/Users/jenniniu/Desktop/example/替换结果/{}'.format(file.split('/')[-1]))
-	print('{}替换完成'.format(file))
+#add as many as changing information,example: change "gewkf" to "fewrf"
+	doc.save('/Users/jenniniu/Desktop/example/results/{}'.format(file.split('/')[-1]))
+	print('{}replacecompleted'.format(file))
