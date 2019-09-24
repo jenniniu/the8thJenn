@@ -1,0 +1,25 @@
+#coding=utf-8
+import docx
+def info_update(doc,old_info,new_info):
+	for para in doc.paragraphs:
+		for run in para.runs:
+			run.text = run.text.replace(old_info, new_info)
+			
+	for table in doc.tables:
+		for row in table.rows:
+			for cell in row.cells:
+				cell.text = cell.text.replace(old_info,new_info)
+import os
+path = '/Users/jenniniu/Desktop/example/'
+files = []
+for file in os.listdir(path):
+	if file.endswith('.docx'):
+		files.append(path+file)
+files
+
+for file in files:
+	doc = docx.Document(file)
+	info_update(doc,'gewkf','fewrf')
+	info_update(doc,'er','tjxt')
+	doc.save('/Users/jenniniu/Desktop/example/替换结果/{}'.format(file.split('/')[-1]))
+	print('{}替换完成'.format(file))
